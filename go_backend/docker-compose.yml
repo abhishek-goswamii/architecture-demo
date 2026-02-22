@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: syncflow_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: syncflow
+      POSTGRES_PASSWORD: syncflow
+      POSTGRES_DB: syncflow
+    ports:
+      - "4410:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
